@@ -14,8 +14,8 @@ public class Plays {
         return plays;
     }
 
-    public Play get(String playName) {
-        return plays.get(playName);
+    public Play get(Performance performance) {
+        return plays.get(performance.getPlayID());
     }
 
 }
