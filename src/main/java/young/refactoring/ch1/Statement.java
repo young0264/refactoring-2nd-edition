@@ -15,25 +15,9 @@ public class Statement {
 
         for (Performance performance : invoice.getPerformanceList()) {
             Play play = plays.get(performance.getPlayID());
-            int thisAmount = 0;
 
-            switch (play.getType()) {
-                case TRAGEDY:
-                    thisAmount = 40000;
-                    if (performance.getAudience() > 30) {
-                        thisAmount += 1000 * (performance.getAudience() - 30);
-                    }
-                    break;
-                case COMEDY: //희극
-                    thisAmount = 30000;
-                    if (performance.getAudience() > 20) {
-                        thisAmount += 10000 + 500 * (performance.getAudience() - 20);
-                    }
-                    thisAmount += 300 * performance.getAudience();
-                    break;
-                default:
-                    throw new Exception("알 수 없는 장르 : " + play.getType());
-            }
+            //
+            int thisAmount = amountFor(performance, play);
 
             //포인트를 적립.
             volumeCredits += Math.max(performance.getAudience() - 30, 0);
@@ -52,6 +36,29 @@ public class Statement {
         result.append(String.format("적립 포인트: %d점\n", volumeCredits));
         return result.toString();
 
+    }
+
+    // For 이하 대상에 대한 금액
+    private static int amountFor(Performance performance, Play play) throws Exception {
+        int result = 0;
+        switch (play.getType()) {
+            case TRAGEDY:
+                result = 40000;
+                if (performance.getAudience() > 30) {
+                    result += 1000 * (performance.getAudience() - 30);
+                }
+                break;
+            case COMEDY: //희극
+                result = 30000;
+                if (performance.getAudience() > 20) {
+                    result += 10000 + 500 * (performance.getAudience() - 20);
+                }
+                result += 300 * performance.getAudience();
+                break;
+            default:
+                throw new Exception("알 수 없는 장르 : " + play.getType());
+        }
+        return result;
     }
 
 
