@@ -15,9 +15,7 @@ public class Statement {
 
         for (Performance performance : invoice.getPerformanceList()) {
 
-            int thisAmount = amountFor(performance, plays);
-
-            //포인트를 적립.
+            //포인트를 적립ㅋ
             volumeCredits += Math.max(performance.getAudience() - 30, 0);
 
             //희극 관객 5명 추가마다 추가 포인트 제공.
@@ -26,8 +24,8 @@ public class Statement {
             }
 
             //청구 내역 출력
-            result.append(String.format("%s: %d %d석\n", playFor(performance, plays).getName(), thisAmount / 100, performance.getAudience()));
-            totalAmount += thisAmount;
+            result.append(String.format("%s: %d %d석\n", playFor(performance, plays).getName(), amountFor(performance, plays) / 100, performance.getAudience()));
+            totalAmount += amountFor(performance, plays);;
         }
 
         result.append(String.format("총액: %d\n", totalAmount / 100));
