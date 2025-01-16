@@ -1,27 +1,33 @@
 package young.refactoring.ch1;
 
 import young.refactoring.ch1.enums.PlayType;
-import young.refactoring.ch1.model.Invoice;
-import young.refactoring.ch1.model.Performance;
-import young.refactoring.ch1.model.Play;
-import young.refactoring.ch1.model.Plays;
+import young.refactoring.ch1.model.*;
 
 public class Statement {
 
     public String statement(Invoice invoice, Plays plays) throws Exception {
-        int totalAmount = 0;
+
+        StatementData statementData = new StatementData(invoice, plays);
+        return renderPlainText(statementData, invoice, plays);
+
+    }
+
+    private String renderPlainText(StatementData statementData,  Invoice invoice, Plays plays) throws Exception {
         StringBuilder result = new StringBuilder(String.format("청구내역 (고객명: %s)\n", invoice.getCustomer()));
 
+        result.append(String.format("총액: %d\n", totalAmount(invoice, plays, result) / 100));
+        result.append(String.format("적립 포인트: %d점\n", totalVolumeCredits(invoice, plays)));
+        return result.toString();
+    }
+
+    private int totalAmount(Invoice invoice, Plays plays, StringBuilder result) throws Exception {
+        int totalAmount = 0;
         for (Performance performance : invoice.getPerformanceList()) {
             //청구 내역 출력
             result.append(String.format("%s: %d %d석\n", playFor(performance, plays).getName(), amountFor(performance, plays) / 100, performance.getAudience()));
             totalAmount += amountFor(performance, plays);;
         }
-
-        result.append(String.format("총액: %d\n", totalAmount / 100));
-        result.append(String.format("적립 포인트: %d점\n", totalVolumeCredits(invoice, plays)));
-        return result.toString();
-
+        return totalAmount;
     }
 
     // 전체 관객수 기반 credit 계산
