@@ -10,28 +10,40 @@ public class Statement {
 
     public String statement(Invoice invoice, Plays plays) throws Exception {
         int totalAmount = 0;
-        int volumeCredits = 0;
         StringBuilder result = new StringBuilder(String.format("청구내역 (고객명: %s)\n", invoice.getCustomer()));
 
         for (Performance performance : invoice.getPerformanceList()) {
-
-            //포인트를 적립ㅋ
-            volumeCredits += Math.max(performance.getAudience() - 30, 0);
-
-            //희극 관객 5명 추가마다 추가 포인트 제공.
-            if (PlayType.COMEDY.equals(playFor(performance, plays).getType())) {
-                volumeCredits += Math.floor(performance.getAudience() / 5);
-            }
-
             //청구 내역 출력
             result.append(String.format("%s: %d %d석\n", playFor(performance, plays).getName(), amountFor(performance, plays) / 100, performance.getAudience()));
             totalAmount += amountFor(performance, plays);;
         }
 
         result.append(String.format("총액: %d\n", totalAmount / 100));
-        result.append(String.format("적립 포인트: %d점\n", volumeCredits));
+        result.append(String.format("적립 포인트: %d점\n", totalVolumeCredits(invoice, plays)));
         return result.toString();
 
+    }
+
+    // 전체 관객수 기반 credit 계산
+    private int totalVolumeCredits(Invoice invoice, Plays plays) {
+        int volumeCredits = 0;
+        for (Performance performance : invoice.getPerformanceList()) {
+            //포인트를 적립
+            volumeCredits += volumeCreditFor(plays, performance);
+        }
+        return volumeCredits;
+    }
+
+    // credit 계산
+    private int volumeCreditFor(Plays plays, Performance performance) {
+        int result = 0;
+        result += Math.max(performance.getAudience() - 30, 0);
+
+        //희극 관객 5명 추가마다 추가 포인트 제공.
+        if (PlayType.COMEDY.equals(playFor(performance, plays).getType())) {
+            result += Math.floor(performance.getAudience() / 5);
+        }
+        return result;
     }
 
     // For 이하 대상에 대한 금액
