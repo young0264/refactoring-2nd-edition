@@ -1,16 +1,16 @@
 package young.refactoring.ch1.model;
 
-import young.refactoring.ch1.enums.PlayType;
-
 import java.util.List;
 
 public class StatementData {
-    private final Invoice invoice;
     private final Plays plays;
+    private final Invoice invoice;
+    private PerformanceCalculator performanceCalculator;
 
     public StatementData(Invoice invoice, Plays plays) {
         this.invoice = invoice;
         this.plays = plays;
+        this.performanceCalculator = new PerformanceCalculator();
     }
 
     public String getCustomer() {
@@ -33,12 +33,8 @@ public class StatementData {
         return plays.get(performance);
     }
 
-    // For 이하 대상에 대한 금액
-    // todo:
-    //      연극 장르에 따라 계산 방법이 달라짐
-    //      -> 함수 옮기기 기법
     public int amountFor(Performance performance) throws Exception {
-        return new PerformanceCalculator(performance, playFor(performance)).amountFor();
+        return performanceCalculator.createPerformanceCalculator(performance, playFor(performance)).amountFor();
     }
 
     public int totalAmount(StatementData statementData) throws Exception {
@@ -50,9 +46,8 @@ public class StatementData {
         return totalAmount / 100;
     }
 
-
     // 전체 관객수 기반 credit 계산
-    public int totalVolumeCredits(StatementData statementData) {
+    public int totalVolumeCredits(StatementData statementData) throws Exception {
         int result = 0;
         for (Performance performance : statementData.getInvoice().getPerformanceList()) {
             //포인트를 적립
@@ -62,8 +57,8 @@ public class StatementData {
     }
 
     // credit 계산
-    private int volumeCreditFor(Performance performance) {
-        return new PerformanceCalculator(performance).volumeCreditFor();
+    private int volumeCreditFor(Performance performance) throws Exception {
+        return performanceCalculator.createPerformanceCalculator(performance, playFor(performance)).volumeCreditFor();
     }
 
 }
