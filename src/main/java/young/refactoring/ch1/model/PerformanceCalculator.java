@@ -4,8 +4,8 @@ import young.refactoring.ch1.enums.PlayType;
 
 public class PerformanceCalculator {
 
-    private Performance performance;
-    private Play play;
+    protected Performance performance;
+    protected Play play;
 
     public PerformanceCalculator(Performance performance, Play play) {
         this.play = play;
