@@ -6,26 +6,26 @@ import young.refactoring.ch1.model.*;
 public class Statement {
 
     public String statement(Invoice invoice, Plays plays) throws Exception {
-        return renderPlainText(invoice, plays);
+        return renderPlainText(new StatementData(invoice, plays));
     }
 
-    private String renderPlainText(Invoice invoice, Plays plays) throws Exception {
-        StringBuilder result = new StringBuilder(String.format("청구내역 (고객명: %s)\n", invoice.getCustomer()));
+    private String renderPlainText(StatementData statementData) throws Exception {
+        StringBuilder result = new StringBuilder(String.format("청구내역 (고객명: %s)\n", statementData.getInvoice().getCustomer()));
 
-        for (Performance performance : invoice.getPerformanceList()) {
+        for (Performance performance : statementData.getInvoice().getPerformanceList()) {
             result.append(String.format("%s: %d %d석\n"
-                    , playFor(performance, plays).getName(), amountFor(performance, plays) / 100, performance.getAudience()));
+                    , statementData.playFor(performance).getName(), statementData.amountFor(performance) / 100, performance.getAudience()));
         }
-        result.append(String.format("총액: %d\n", totalAmount(invoice, plays)));
-        result.append(String.format("적립 포인트: %d점\n", totalVolumeCredits(invoice, plays)));
+        result.append(String.format("총액: %d\n", totalAmount(statementData)));
+        result.append(String.format("적립 포인트: %d점\n", totalVolumeCredits(statementData.getInvoice(), statementData.getPlays())));
         return result.toString();
     }
 
-    private int totalAmount(Invoice invoice, Plays plays) throws Exception {
+    private int totalAmount(StatementData statementData) throws Exception {
         int totalAmount = 0;
-        for (Performance performance : invoice.getPerformanceList()) {
+        for (Performance performance : statementData.getInvoice().getPerformanceList()) {
             //청구 내역 출력
-            totalAmount += amountFor(performance, plays);
+            totalAmount += amountFor(performance, statementData.getPlays());
         }
         return totalAmount / 100;
     }
