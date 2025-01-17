@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="young.refactoring.ch1.StatementTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-01-17T18:57:04" hostname="MacBook-Pro-3.local" time="0.012">
+  <properties/>
+  <testcase name="statementRenderPlainText()" classname="young.refactoring.ch1.StatementTest" time="0.011"/>
+  <testcase name="statementRenderHtml()" classname="young.refactoring.ch1.StatementTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
