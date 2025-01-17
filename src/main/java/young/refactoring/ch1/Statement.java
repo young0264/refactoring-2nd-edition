@@ -32,12 +32,12 @@ public class Statement {
 
     // 전체 관객수 기반 credit 계산
     private int totalVolumeCredits(Invoice invoice, Plays plays) {
-        int volumeCredits = 0;
+        int result = 0;
         for (Performance performance : invoice.getPerformanceList()) {
             //포인트를 적립
-            volumeCredits += volumeCreditFor(plays, performance);
+            result += volumeCreditFor(plays, performance);
         }
-        return volumeCredits;
+        return result;
     }
 
     // credit 계산
