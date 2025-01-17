@@ -70,7 +70,6 @@ public class StatementTest {
                 적립 포인트: 280점""";
 
         Assertions.assertEquals(statementResult, expectedAnswer);
-
     }
 
     private static HashMap<String, Play> getStringPlayHashMapForTest() {
