@@ -6,11 +6,10 @@ import young.refactoring.ch1.model.*;
 public class Statement {
 
     public String statement(Invoice invoice, Plays plays) throws Exception {
-        StatementData statementData = new StatementData(invoice, plays);
-        return renderPlainText(statementData, invoice, plays);
+        return renderPlainText(invoice, plays);
     }
 
-    private String renderPlainText(StatementData statementData,  Invoice invoice, Plays plays) throws Exception {
+    private String renderPlainText(Invoice invoice, Plays plays) throws Exception {
         StringBuilder result = new StringBuilder(String.format("청구내역 (고객명: %s)\n", invoice.getCustomer()));
 
         for (Performance performance : invoice.getPerformanceList()) {
