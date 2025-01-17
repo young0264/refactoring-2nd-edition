@@ -32,26 +32,11 @@ public class PerformanceCalculator {
     }
 
     public int amountFor() throws Exception {
-        int result = 0;
-        switch (play.getType()) {
-            case TRAGEDY:
-                return new TragedyCalculator(performance, play).amountFor();
-            case COMEDY: //희극
-                return new ComedyCalculator(performance, play).amountFor();
-            default:
-                throw new Exception("알 수 없는 장르 : " + play);
-        }
+        throw new Exception("서브 클래스에서 처리하도록 설계되었습니다.");
     }
 
-    public int volumeCreditFor() {
-        int result = 0;
-        result += Math.max(performance.getAudience() - 30, 0);
-
-        //희극 관객 5명 추가마다 추가 포인트 제공.
-        if (PlayType.COMEDY.equals(this.play.getType())) {
-            result += Math.floor(performance.getAudience() / 5);
-        }
-        return result;
+    public int volumeCreditFor() throws Exception {
+        throw new Exception("서브 클래스에서 처리하도록 설계되었습니다.");
     }
 
 }
