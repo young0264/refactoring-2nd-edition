@@ -16,26 +16,31 @@ public class PerformanceCalculator {
         this.performance = performance;
     }
 
+    public PerformanceCalculator() {
+    }
+
+    // 생성자를 팩터리 함수로 변환
+    public PerformanceCalculator createPerformanceCalculator(Performance performance, Play play) throws Exception {
+        switch (play.getType()) {
+            case TRAGEDY:
+                return new TragedyCalculator(performance, play);
+            case COMEDY:
+                return new ComedyCalculator(performance, play);
+            default:
+                throw new Exception("알 수 없는 타입입니다.");
+        }
+    }
+
     public int amountFor() throws Exception {
         int result = 0;
         switch (play.getType()) {
             case TRAGEDY:
-                result = 40000;
-                if (performance.getAudience() > 30) {
-                    result += 1000 * (performance.getAudience() - 30);
-                }
-                break;
+                return new TragedyCalculator(performance, play).amountFor();
             case COMEDY: //희극
-                result = 30000;
-                if (performance.getAudience() > 20) {
-                    result += 10000 + 500 * (performance.getAudience() - 20);
-                }
-                result += 300 * performance.getAudience();
-                break;
+                return new ComedyCalculator(performance, play).amountFor();
             default:
                 throw new Exception("알 수 없는 장르 : " + play);
         }
-        return result;
     }
 
     public int volumeCreditFor() {
@@ -48,4 +53,5 @@ public class PerformanceCalculator {
         }
         return result;
     }
+
 }
