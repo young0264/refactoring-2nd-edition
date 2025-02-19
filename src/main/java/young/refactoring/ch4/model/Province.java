@@ -29,4 +29,9 @@ public class Province {
         this.totalProduction += 1;
     }
 
+    // 생산 부족을 계산하는 메서드
+    public int shortfall() {
+        return this.demand - this.totalProduction;
+    }
+
 }
