@@ -19,4 +19,9 @@ public class Producer {
         this.province = province;
     }
 
+    public void setProduction(int production) {
+        this.province.totalProduction += production - this.production;
+        this.production = production;
+    }
+
 }
