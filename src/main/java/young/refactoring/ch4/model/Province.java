@@ -6,7 +6,7 @@ import java.util.List;
 public class Province {
     private String name;
     List<Producer> producerList = new ArrayList<>();
-    private int totalProduction;
+    protected int totalProduction;
     private int demand;
     private int price;
 
