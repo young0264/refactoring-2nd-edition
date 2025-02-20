@@ -24,4 +24,13 @@ public class Producer {
         this.production = production;
     }
 
+    @Override
+    public String toString() {
+        return "Producer{" +
+                "name='" + name + '\'' +
+                ", cost=" + cost +
+                ", production=" + production +
+                ", province=" + province +
+                '}';
+    }
 }
