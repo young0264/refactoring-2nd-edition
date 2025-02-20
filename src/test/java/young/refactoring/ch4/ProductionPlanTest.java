@@ -4,7 +4,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import young.refactoring.ch4.model.Producer;
 import young.refactoring.ch4.model.Province;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -35,6 +38,23 @@ public class ProductionPlanTest {
 
         //then
         assertEquals(shortfall, answer);
+    }
+
+    @Test
+    @DisplayName("픽스처 수정")
+    void changeProductionTest() {
+        //given
+        int shortFall = -6;
+        int profit = 600;
+
+        //when
+        sampleProvinceData.getProducerList().get(0).setProduction(20);
+        int actualShortFall = sampleProvinceData.getShortfall();
+        int actualProfit = sampleProvinceData.getProfit();
+
+        //then
+        assertEquals(shortFall, actualShortFall);
+        assertEquals(profit, actualProfit);
     }
 
 }
