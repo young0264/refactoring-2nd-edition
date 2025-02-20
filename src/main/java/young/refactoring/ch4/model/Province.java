@@ -52,6 +52,10 @@ public class Province {
         return this.demand - this.totalProduction;
     }
 
+    public List<Producer> getProducerList() {
+        return this.producerList;
+    }
+
     // 수익을 얻는 메서드
     public int getProfit(){
         return this.satisfiedDemand()*this.price;
