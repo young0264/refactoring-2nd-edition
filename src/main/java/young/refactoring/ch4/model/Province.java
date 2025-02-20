@@ -25,6 +25,11 @@ public class Province {
         this.producerList = producerList;
         this.demand = demand;
         this.price = price;
+        this.totalProduction = 0;
+        producerList.stream().forEach(p -> {
+            p.province = this;
+            totalProduction += p.production;
+        });
     }
 
     public Province(String name, int totalProduction, int demand, int price) {
@@ -42,6 +47,8 @@ public class Province {
 
     // 생산 부족을 계산하는 메서드
     public int getShortfall() {
+        System.out.println("demand : " + demand);
+        System.out.println("totalProduction : " + totalProduction);
         return this.demand - this.totalProduction;
     }
 
