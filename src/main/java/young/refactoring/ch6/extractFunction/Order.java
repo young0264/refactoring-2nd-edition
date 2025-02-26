@@ -3,11 +3,20 @@ package young.refactoring.ch6.extractFunction;
 public class Order {
 
     private Record record;
+    private int amount;
     private int quantity;
     private int itemPrice;
 
     public Order(Record record) {
         this.record = record;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 
     public Record getRecord() {
@@ -23,6 +32,5 @@ public class Order {
                 - Math.max(0, this.quantity - 500) * this.itemPrice * 0.05
                 + Math.min(this.quantity * this.itemPrice * 0.1, 100));
     }
-
 
 }
