@@ -15,4 +15,8 @@ public class AddParams {
         this.reservations.add(customer);
     }
 
+    public Queue<Customer> getReservations() {
+        return reservations;
+    }
+
 }
