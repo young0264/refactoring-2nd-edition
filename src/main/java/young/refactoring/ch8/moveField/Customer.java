@@ -4,25 +4,28 @@ import java.time.LocalDateTime;
 
 public class Customer {
     protected String name;
-    protected double discountRate;
     protected CustomerContract customerContract;
 
     public Customer(String name, double discountRate) {
         this.name = name;
-        this.discountRate = discountRate;
-        this.customerContract = new CustomerContract(LocalDateTime.now());
+        this.customerContract = new CustomerContract(LocalDateTime.now(), discountRate);
+    }
+
+    private void setDiscountRate(double discountRate) {
+        this.customerContract.discountRate = discountRate;
     }
 
     public double getDiscountRate() {
-        return discountRate;
+        return customerContract.discountRate;
     }
 
     public void becomePreferred() {
-        discountRate += 0.3;
+        setDiscountRate(getDiscountRate() + 0.3);
         // do something
     }
 
     public int applyAmount(int amount) {
-        return Math.subtractExact(amount, (int) (amount * discountRate));
+        return Math.subtractExact(amount, (int) (amount * customerContract.discountRate));
     }
+
 }
