@@ -21,11 +21,11 @@ public class Customer {
 
     public void becomePreferred() {
         setDiscountRate(getDiscountRate() + 0.3);
-        // do something
+        // 다른 멋진 일들
     }
 
     public int applyAmount(int amount) {
-        return Math.subtractExact(amount, (int) (amount * customerContract.discountRate));
+        return Math.subtractExact(amount, (int) (amount * getDiscountRate()));
     }
 
 }
