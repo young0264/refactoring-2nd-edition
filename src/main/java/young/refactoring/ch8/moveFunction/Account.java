@@ -1,7 +1,7 @@
 package young.refactoring.ch8.moveFunction;
 
 public class Account {
-    private int dayOverdrawn;
+    private int dayOverdrawn; //(계좌별로 달라지는 변수), 특정날 초과인출?
     private AccountType type;
 
     /** 은행 이자 계산 */
@@ -14,17 +14,8 @@ public class Account {
     }
 
     /** 초과 인출 이자 계산 */
-    public double overdraftCharge() {
-        if (this.type.isPremium) {
-            int baseCharge = 10;
-            if (this.dayOverdrawn <= 7) {
-                return baseCharge;
-            } else {
-                return baseCharge * (this.dayOverdrawn - 7) * 0.85;
-            }
-        } else {
-            return this.dayOverdrawn * 1.75;
-        }
+    public double overdraftCharge() { // 위임 메서드
+        return this.type.overdraftCharge(this.dayOverdrawn);
     }
 
 }
