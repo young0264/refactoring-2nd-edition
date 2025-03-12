@@ -10,7 +10,7 @@ public class Camera {
     public void renderPeron(OutputStream outputStream, Person person) throws IOException {
         outputStream.write(String.format("<p> %s </p>", person.name).getBytes());
         renderPhoto(outputStream, person.photo);
-        emitPhotoData(outputStream, person.photo);
+        zzNew(outputStream, person.photo);
         outputStream.write(String.format("<p> 날짜: %s </p>", person.photo.date.toString()).getBytes());
     }
 
@@ -20,7 +20,7 @@ public class Camera {
                 .forEach(p -> {
                     try {
                         outputStream.write("<div> \n".getBytes());
-                        emitPhotoData(outputStream, p);
+                        zzNew(outputStream, p);
                         outputStream.write(String.format("<p> 날짜: %s </p>", p.date.toString()).getBytes());
                         outputStream.write("</div>\n".getBytes());
                     } catch (IOException e) {
@@ -30,8 +30,8 @@ public class Camera {
     }
 
     private void emitPhotoData(OutputStream outputStream, Photo photo) throws IOException {
-        outputStream.write(String.format("<p> 제목: %s </p>", photo.title).getBytes());
-        outputStream.write(String.format("<p> 위치: %s </p>", photo.location).getBytes());
+        zzNew(outputStream, photo);
+        outputStream.write(String.format("<p> 날짜: %s </p>", photo.date.toString()).getBytes());
     }
 
     public String renderPhoto(OutputStream outputStream, Photo photo) {
@@ -40,6 +40,11 @@ public class Camera {
 
     private LocalDateTime recentDateCutOff() {
         return null;
+    }
+
+    private static void zzNew(OutputStream outputStream, Photo photo) throws IOException {
+        outputStream.write(String.format("<p> 제목: %s </p>", photo.title).getBytes());
+        outputStream.write(String.format("<p> 위치: %s </p>", photo.location).getBytes());
     }
 
 }
