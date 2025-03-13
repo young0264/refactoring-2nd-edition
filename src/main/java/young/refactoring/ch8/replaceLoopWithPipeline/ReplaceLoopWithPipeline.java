@@ -13,18 +13,11 @@ public class ReplaceLoopWithPipeline {
 
         // TO-BE
         Arrays.stream(loop)
-                .skip(1)
-                .filter(line -> !line.trim().equals(""))
-        ;
-
-        // AS-IS
-        for (String line : lines) {
-            String[] record = line.split(",");
-            if (record[1].trim().equals("India")){
-                //city, phone
-                result.add(new Office(record[0], record[2]));
-            }
-        }
+                .skip(1)                              // 1번 스킵하고
+                .filter(line -> !line.trim().equals("")) // ""가 아닌 데이터만 가져오고
+                .map(line -> line.split(","))
+                .filter(record -> record[1].trim().equals("India"))
+                .forEach(record -> result.add(new Office(record[0], record[2]))); //Performs an action for each element of this stream.
         return result;
     }
 }
