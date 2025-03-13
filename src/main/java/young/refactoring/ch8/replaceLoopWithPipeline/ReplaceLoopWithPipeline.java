@@ -10,12 +10,15 @@ public class ReplaceLoopWithPipeline {
         List<Office> result = new ArrayList<>();
 
         String[] loop = lines;
+
+        // TO-BE
         Arrays.stream(loop)
-                .skip(1);
+                .skip(1)
+                .filter(line -> !line.trim().equals(""))
+        ;
 
-    for (String line : lines) {
-            if (line.trim().equals("")) continue;
-
+        // AS-IS
+        for (String line : lines) {
             String[] record = line.split(",");
             if (record[1].trim().equals("India")){
                 //city, phone
