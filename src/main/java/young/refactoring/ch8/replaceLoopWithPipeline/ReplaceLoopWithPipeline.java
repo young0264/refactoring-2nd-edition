@@ -1,18 +1,19 @@
 package young.refactoring.ch8.replaceLoopWithPipeline;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ReplaceLoopWithPipeline {
     public List<Office> acquireData(String input) {
         String[] lines = input.split("\n");
-        boolean firstLine = true;
         List<Office> result = new ArrayList<>();
-        for (String line : lines) {
-            if (firstLine) {
-                firstLine = false;
-                continue;
-            }
+
+        String[] loop = lines;
+        Arrays.stream(loop)
+                .skip(1);
+
+    for (String line : lines) {
             if (line.trim().equals("")) continue;
 
             String[] record = line.split(",");
