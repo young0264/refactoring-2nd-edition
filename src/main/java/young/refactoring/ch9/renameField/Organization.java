@@ -1,16 +1,16 @@
 package young.refactoring.ch9.renameField;
 
 public class Organization {
-    private String name;
+    private String title;
     private String country;
 
     public Organization(String name, String country) {
-        this.name = name;
+        this.title = name;
         this.country = country;
     }
 
     public String getName() {
-        return this.name;
+        return this.title;
     }
 
     public String getCountry() {
