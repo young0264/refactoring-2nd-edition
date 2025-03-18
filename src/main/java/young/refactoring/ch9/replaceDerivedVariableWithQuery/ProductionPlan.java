@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductionPlan {
-    int production;
-    int calculatedProduction;
     List<Adjustment> adjustments = new ArrayList<>();
 
     public int getProduction() {
-        return this.calculatedProduction;
+        return getCalculatedProduction();
+    }
+
+    private Integer getCalculatedProduction() {
+        return this.adjustments.stream()
+                .map(a -> a.amount)
+                .reduce(0, Integer::sum);
     }
 
     public void applyAdjustment(Adjustment adjustment) {
