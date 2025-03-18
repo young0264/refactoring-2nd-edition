@@ -9,7 +9,7 @@ public class Organization {
         this.country = country;
     }
 
-    public String getName() {
+    public String getTitle() {
         return this.title;
     }
 
