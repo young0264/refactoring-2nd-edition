@@ -4,8 +4,8 @@ public class Organization {
     private String title;
     private String country;
 
-    public Organization(String name, String country) {
-        this.title = name;
+    public Organization(String title, String country) {
+        this.title = title;
         this.country = country;
     }
 
