@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductionPlan {
+    int production;
+    int initialProduction;
+    int productionAccumulator;
     List<Adjustment> adjustments = new ArrayList<>();
 
     public int getProduction() {
-        return getCalculatedProduction();
+        return this.initialProduction + this.productionAccumulator;
     }
 
     private Integer getCalculatedProduction() {
@@ -18,6 +21,12 @@ public class ProductionPlan {
 
     public void applyAdjustment(Adjustment adjustment) {
         this.adjustments.add(adjustment);
+        this.production += adjustment.amount;
     }
 
+    public ProductionPlan(int production) {
+        this.initialProduction = production;
+        this.productionAccumulator = 0;
+        this.adjustments = new ArrayList<>();
+    }
 }
