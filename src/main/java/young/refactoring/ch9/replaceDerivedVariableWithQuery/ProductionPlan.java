@@ -9,11 +9,11 @@ public class ProductionPlan {
     List<Adjustment> adjustments = new ArrayList<>();
 
     public int getProduction() {
-        return this.production;
+        return this.calculatedProduction;
     }
 
     public void applyAdjustment(Adjustment adjustment) {
-        this.production += adjustment.amount;
+        this.adjustments.add(adjustment);
     }
 
 }
