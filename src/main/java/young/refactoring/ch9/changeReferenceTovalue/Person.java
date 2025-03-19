@@ -4,7 +4,7 @@ public class Person {
     TelephoneNumber telephoneNumber;
 
     public Person(String areaCode, String number) {
-        telephoneNumber = new TelephoneNumber(areaCode, number);
+        telephoneNumber = new TelephoneNumber(areaCode, number);        // refactor: 전체 생성자
     }
 
     public String getOfficeAreaCode() {
@@ -12,7 +12,7 @@ public class Person {
     }
 
     public void setOfficeAreaCode(String areaCode) {
-        telephoneNumber = new TelephoneNumber(areaCode, telephoneNumber.number);
+        telephoneNumber = new TelephoneNumber(areaCode, telephoneNumber.number);    // refactor: 새로운 객체 대입(불변유지)
     }
 
     public String getOfficeNumber() {
@@ -20,6 +20,6 @@ public class Person {
     }
 
     public void setOfficeNumber(String number) {
-        telephoneNumber = new TelephoneNumber(telephoneNumber.areaCode, number);
+        telephoneNumber = new TelephoneNumber(telephoneNumber.areaCode, number);    // refactor: 새로운 객체 대입(불변유지)
     }
 }
