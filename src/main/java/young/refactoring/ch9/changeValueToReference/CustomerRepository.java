@@ -14,10 +14,12 @@ public class CustomerRepository {
     // has -> containsKey
     // set -> put
     // get == get
-    public void registerCustomer(Long id) {
+    public Customer registerCustomer(Long id) {
+        initialize();
         if (!repositoryData.customer.containsKey(id)) {
             repositoryData.customer.put(id, new Customer(id));
         }
+        return findCustomer(id);
     }
 
     public Customer findCustomer(Long id) {
