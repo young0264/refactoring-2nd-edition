@@ -34,7 +34,7 @@ public class Camera {
     }
 
     private LocalDateTime recentDateCutOff() {
-        return null;
+        return LocalDateTime.now().minusDays(30); // 최근 30일 기준으로 필터링
     }
 
     private static void emitPhotoData(OutputStream outputStream, Photo photo) throws IOException {
