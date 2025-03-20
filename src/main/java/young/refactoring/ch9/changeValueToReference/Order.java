@@ -4,8 +4,8 @@ public class Order {
     int number;
     Customer customer;
 
-    public Order(int number, Customer customer) {
+    public Order(int number, Long customerId) {
         this.number = number;
-        this.customer = customer;
+        this.customer = new Customer(customerId);
     }
 }
