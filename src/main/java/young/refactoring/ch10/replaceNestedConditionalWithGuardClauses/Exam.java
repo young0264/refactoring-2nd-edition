@@ -4,14 +4,11 @@ public class Exam {
     public AmountReason payAmount(Employee employee){
         AmountReason result;
         if (employee.isSeparated()) { // 퇴사한 직원
-            result = new AmountReason(0, "SEP");
-        } else if (employee.isRetired()) { // 은퇴한 직원 , 책과는 상이함
-            result = new AmountReason(0, "RET");
-        } else {
-            //급여 계산 로직
-            result = calculateSalary();
+            return  new AmountReason(0, "SEP");
+        } if (employee.isRetired()) { // 은퇴한 직원
+            return new AmountReason(0, "RET");
         }
-        return result;
+        return calculateSalary(); //급여 계산 로직
     }
 
     private AmountReason calculateSalary() { // 그 외,
