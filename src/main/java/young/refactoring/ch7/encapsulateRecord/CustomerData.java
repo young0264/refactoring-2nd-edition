@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CustomerData {
-    private Map<String, CustomerUsage> data;
+    private Map<String, CustomerUsage> data = new HashMap<>();
 
     public CustomerData() {
     }
