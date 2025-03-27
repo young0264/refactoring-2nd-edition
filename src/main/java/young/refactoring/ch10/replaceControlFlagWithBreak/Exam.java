@@ -3,14 +3,12 @@ package young.refactoring.ch10.replaceControlFlagWithBreak;
 public class Exam {
 
     public String checkForMiscreants(People people) {
-        for (Person person : people.people()) {
-            if (person.name().equals("조커")) {
-                return sendAert();
-            }else if (person.name().equals("사루만")) {
-                return sendAert();
-            }
-        }
-        return "신원불명";
+        return people.people().stream()
+                .map(Person::name)
+                .filter(name -> name.equals("조커") || name.equals("사루만"))
+                .findFirst()
+                .map(name -> sendAert())
+                .orElse("신원불명");
     }
 
     private String sendAert() {
