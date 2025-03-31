@@ -6,14 +6,17 @@ import java.util.List;
 public class Exam {
     List<Person> people = new ArrayList<>();
 
-    public String alertForMiscreant() {
+    public void alertForMiscreant() {
+        if(findForMiscreant().equals("")) return;
+        setOffAlarms();
+    }
+
+    public String findForMiscreant(){
         for (Person p : people) {
             if (p.name().equals("조커")) {
-                setOffAlarms();
                 return "조커";
             }
             if (p.name().equals("사루만")) {
-                setOffAlarms();
                 return "사루만";
             }
         }
