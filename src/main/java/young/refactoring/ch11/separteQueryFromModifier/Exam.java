@@ -9,21 +9,11 @@ public class Exam {
     public String alertForMiscreant() {
         for (Person p : people) {
             if (p.name().equals("조커")) {
+                setOffAlarms();
                 return "조커";
             }
             if (p.name().equals("사루만")) {
-                return "사루만";
-            }
-        }
-        return "";
-    }
-
-    public String findForMiscreant(){
-        for (Person p : people) {
-            if (p.name().equals("조커")) {
-                return "조커";
-            }
-            if (p.name().equals("사루만")) {
+                setOffAlarms();
                 return "사루만";
             }
         }
