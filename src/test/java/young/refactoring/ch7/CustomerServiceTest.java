@@ -11,8 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerServiceTest {
 
-//    @BeforeEach
-    @Test
+    @BeforeEach
     void setUp() {
         // 테스트 데이터 초기화
         CustomerData customerData = new CustomerData();
