@@ -21,12 +21,22 @@ public class ProductionPlan {
 
     public void applyAdjustment(Adjustment adjustment) {
         this.adjustments.add(adjustment);
-        this.production += adjustment.amount;
+        this.productionAccumulator += adjustment.amount;
     }
 
     public ProductionPlan(int production) {
         this.initialProduction = production;
         this.productionAccumulator = 0;
         this.adjustments = new ArrayList<>();
+    }
+
+    @Override
+    public String toString() {
+        return "ProductionPlan{" +
+                "production=" + production +
+                ", initialProduction=" + initialProduction +
+                ", productionAccumulator=" + productionAccumulator +
+                ", adjustments=" + adjustments +
+                '}';
     }
 }
