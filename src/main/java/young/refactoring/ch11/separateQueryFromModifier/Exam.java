@@ -1,4 +1,4 @@
-package young.refactoring.ch11.separteQueryFromModifier;
+package young.refactoring.ch11.separateQueryFromModifier;
 
 import java.util.ArrayList;
 import java.util.List;

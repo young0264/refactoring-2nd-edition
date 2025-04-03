@@ -1,4 +1,4 @@
-package young.refactoring.ch11.separteQueryFromModifier;
+package young.refactoring.ch11.separateQueryFromModifier;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
