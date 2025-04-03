@@ -5,7 +5,17 @@ import java.util.stream.Stream;
 
 public class Exam {
 
-    public LocalDateTime deliveryDate(Order order, boolean isRush) {
+    /** ========= 래핑(wrapping) 함수를 통해 처리========= */
+    public LocalDateTime rushDeliveryDate(Order order) {
+        return deliveryDate(order, true);
+    }
+
+    public LocalDateTime regularDeliveryDate(Order order) {
+        return deliveryDate(order, false);
+    }
+    /** ==================================== */
+
+    private LocalDateTime deliveryDate(Order order, boolean isRush) {
         int deliveryTime;
 
         if (Stream.of("MA", "CT")
@@ -32,4 +42,5 @@ public class Exam {
         if (isRush) result = result.minusDays(1);
         return result;
     }
+
 }
