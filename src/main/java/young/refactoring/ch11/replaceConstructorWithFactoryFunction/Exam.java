@@ -4,11 +4,19 @@ public class Exam {
     private Document document;
 
     public void client() {
-        Employee candidate = new Employee(document.name, document.empType);
+        Employee candidate = createEmployee(document.name, document.empType);
     }
 
     public void client2() {
-        Employee leadEngineer = new Employee(document.leadEngineerName, "E");
+        Employee leadEngineer = createEngineer(document.leadEngineerName);
+    }
+
+    private Employee createEmployee(String name, String empType) {
+        return Employee.createEmployee(name, empType);
+    }
+
+    private Employee createEngineer(String leadEngineerName) {
+        return Employee.createEmployee(leadEngineerName, "Engineer");
     }
 
 }
