@@ -7,8 +7,8 @@ public class Exam {
 
     // 클라이언트 
     public void client() {
-        if (heatingPlan.targetTemperature() > Thermostat.currentTemperature) setToHeat();
-        else if (heatingPlan.targetTemperature() < Thermostat.currentTemperature) setToCool();
+        if (heatingPlan.newTargetTemperature(Thermostat.selectedTemperature) > Thermostat.currentTemperature) setToHeat();
+        else if (heatingPlan.newTargetTemperature(Thermostat.selectedTemperature) < Thermostat.currentTemperature) setToCool();
         else setOff();
     }
 
