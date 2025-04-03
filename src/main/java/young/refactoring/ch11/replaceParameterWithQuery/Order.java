@@ -1,5 +1,6 @@
 package young.refactoring.ch11.replaceParameterWithQuery;
 
+/** 매개변수를 질의 함수로 바꾸기 */
 public class Order {
 
     private int quantity;
