@@ -9,7 +9,6 @@ public class Exam2 {
                 (int) (bottomBand(usage) * 0.03
                         + middleBand(usage) * 0.05
                         + topBand(usage) * 0.07);
-
         return usd(amount);
     }
 
@@ -27,5 +26,10 @@ public class Exam2 {
 
     private int bottomBand(int usage) {
         return Math.min(usage, 0);
+    }
+
+    // middle 개념 재정의 -> top, bottom 입력
+    private int withinBand(int usage, int bottom, int top) {
+        return usage > bottom ? Math.min(usage, top) - bottom : 0;
     }
 }
