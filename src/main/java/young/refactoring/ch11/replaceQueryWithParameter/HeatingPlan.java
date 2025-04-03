@@ -5,14 +5,14 @@ public class HeatingPlan {
     private int min;
     private int max;
 
-    public int targetTemperature() {
-        if (Thermostat.selectedTemperature > this.max) {
+    public int newTargetTemperature(int selectedTemperature) {
+        if (selectedTemperature > this.max) {
             return this.max;
         }
-        if (Thermostat.selectedTemperature < this.min) {
+        if (selectedTemperature < this.min) {
             return this.min;
         }
-        return Thermostat.selectedTemperature;
+        return selectedTemperature;
     }
 
 }
