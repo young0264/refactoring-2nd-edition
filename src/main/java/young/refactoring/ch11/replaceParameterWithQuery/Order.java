@@ -7,10 +7,12 @@ public class Order {
 
     public int finalPrice() {
         int basePrice = quantity * itemPrice;
-        int discountLevel = 1;
-        if (quantity > 100) discountLevel = 2;
-
+        int discountLevel = discountLevel();
         return discountPrice(basePrice, discountLevel);
+    }
+
+    private int discountLevel() {
+        return quantity > 100 ? 2 : 1;
     }
 
     private int discountPrice(int basePrice, int discountLevel) {
