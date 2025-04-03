@@ -9,6 +9,10 @@ public class Employee {
         this.type = type;
     }
 
+    public static Employee createEmployee(String name, String empType) {
+        return new Employee(name, empType);
+    }
+
     public String getName() {
         return name;
     }
