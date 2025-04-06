@@ -10,24 +10,22 @@ public class GPS {
     int totalDistance;
 
     public void calculate() {
-        totalAscent = 0;
-        totalTime = 0;
-        totalDistance = 0;
-
-        calculateAscent();
-        calculateTime();
-        calculateDistance();
+        totalAscent = calculateAscent();
+        totalTime = calculateTime();
+        totalDistance = calculateDistance();
         if (totalDistance == 0) {
             return;
         }
         int pace = totalTime / 60 / totalDistance;
     }
 
-    private void calculateAscent() {
+    private int calculateAscent() {
+        int result = 0;
         for (int i = 1; i < points.size(); i++) {
             int verticalChange = points.get(i).elevation - points.get(i - 1).elevation;
-            totalAscent += Math.max(verticalChange, 0); // 음수는 계산 X
+            result += Math.max(verticalChange, 0); // 음수는 계산 X
         }
+        return result;
     }
 
     private int calculateTime() {
