@@ -8,11 +8,12 @@ public class ResourcePool {
 
     public Resource get() {
         Resource result;
-        try {
-            result = available.pop();
-            allocated.add(result);
-        } catch (NoSuchElementException e) {
+
+        if (available.isEmpty()) {
             result = Resource.create();
+            allocated.add(result);
+        } else {
+            result = available.pop();
             allocated.add(result);
         }
         return result;
