@@ -2,9 +2,9 @@ package young.refactoring.ch11.replaceErrorCodeWithException;
 
 public class OrderProcessingError extends Exception {
 
-    private final int errorCode;
+    private final String errorCode;
 
-    public OrderProcessingError(int errorcode) {
+    public OrderProcessingError(String errorcode) {
         super(String.format("주문 처리 오류 : %s", errorcode));
         errorCode = errorcode;
     }
@@ -13,4 +13,7 @@ public class OrderProcessingError extends Exception {
         return "OrderProcessingError";
     }
 
+    public String getErrorCode() {
+        return errorCode;
+    }
 }

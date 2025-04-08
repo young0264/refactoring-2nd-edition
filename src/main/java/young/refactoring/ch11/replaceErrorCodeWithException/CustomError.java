@@ -8,4 +8,12 @@ public class CustomError {
         this.order = order;
         this.errorCode = errorCode;
     }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public OrderProcessingError getErrorCode() {
+        return errorCode;
+    }
 }
