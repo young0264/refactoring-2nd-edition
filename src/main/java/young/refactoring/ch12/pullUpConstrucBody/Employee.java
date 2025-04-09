@@ -4,6 +4,11 @@ public class Employee extends Party {
     Long id;
     int monthlyCost;
 
+
+    public Employee(String name) {
+        super(name);
+    }
+
     public Employee(Long id, String name, int monthlyCost) {
         super(name);
         this.id = id;
@@ -15,7 +20,6 @@ public class Employee extends Party {
     }
 
     protected void assignCar() {
-
     }
 
     protected void finishConstruction() {
