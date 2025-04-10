@@ -26,9 +26,9 @@ JAVA
 | 6  | 기본적인 리팩터링       | [chapter06.md](https://github.com/young0264/refactoring-2nd-edition/blob/chapter06/document/chapter06.md) | [chapter06](https://github.com/young0264/refactoring-2nd-edition/tree/chapter06) |
 | 7  | 캡슐화               | [chapter07.md](https://github.com/young0264/refactoring-2nd-edition/blob/chapter07/document/chapter07.md) | [chapter07](https://github.com/young0264/refactoring-2nd-edition/tree/chapter07) |
 | 8  | 기능 이동             | [chapter08.md](https://github.com/young0264/refactoring-2nd-edition/blob/chapter08/document/chapter08.md) | [chapter08](https://github.com/young0264/refactoring-2nd-edition/tree/chapter08) |
-| 9  | 데이터 조직화          | chapter09.md                                                                                              | chapter09                                                                        |
-| 10 | 조건부 로직 간소화      | chapter10.md                                                                                              | chapter10                                                                        |
-| 11 | API 리팩터링          | chapter11.md                                                                                              | chapter11                                                                        |
-| 12 | 상속 다루기            | chapter12.md                                                                                              | chapter12                                                                        |
+| 9  | 데이터 조직화          | [chapter09.md](https://github.com/young0264/refactoring-2nd-edition/blob/chapter08/document/chapter09.md) | [chapter09](https://github.com/young0264/refactoring-2nd-edition/tree/chapter09) |
+| 10 | 조건부 로직 간소화      | [chapter10.md](https://github.com/young0264/refactoring-2nd-edition/blob/chapter08/document/chapter10.md) | [chapter10](https://github.com/young0264/refactoring-2nd-edition/tree/chapter10) |
+| 11 | API 리팩터링          | [chapter11.md](https://github.com/young0264/refactoring-2nd-edition/blob/chapter08/document/chapter11.md) | [chapter11](https://github.com/young0264/refactoring-2nd-edition/tree/chapter11) |
+| 12 | 상속 다루기            | [chapter12.md](https://github.com/young0264/refactoring-2nd-edition/blob/chapter08/document/chapter12.md) | [chapter12](https://github.com/young0264/refactoring-2nd-edition/tree/chapter12) |
 
 ---
