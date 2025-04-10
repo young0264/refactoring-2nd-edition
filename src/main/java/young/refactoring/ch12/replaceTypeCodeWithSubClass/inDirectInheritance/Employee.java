@@ -1,23 +1,20 @@
 package young.refactoring.ch12.replaceTypeCodeWithSubClass.inDirectInheritance;
 
-import java.util.List;
-
 public class Employee {
     String name;
     EmployeeType type;
 
-    public Employee(String name, EmployeeType type) throws Exception {
-        validateType(type);
+    public Employee(String name, String type) throws Exception {
         this.name = name;
-        this.type = type;
+        this.type = createEmployeeType(type);
     }
 
-    private void validateType(EmployeeType type) throws Exception {
-        if (List.of("manager", "engineer", "salesperson")
-                .stream()
-                .noneMatch(t -> t.equals(type.getValue()))
-        ) {
-            throw new Exception(String.format("%s 에 해당하는 직원 유형은 없습니다.", type));
+    private EmployeeType createEmployeeType(String type) throws Exception {
+        switch (type) {
+            case "manager": return new Manager();
+            case "engineer": return new Engineer();
+            case "salesperson": return new Salesperson();
+            default: throw new Exception(String.format("%s 에 해당하는 직원 유형은 없습니다.", type));
         }
     }
 
