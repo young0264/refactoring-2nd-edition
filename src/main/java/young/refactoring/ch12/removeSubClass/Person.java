@@ -17,4 +17,8 @@ public class Person {
         return name;
     }
 
+    public String getGenderCode() {
+        return "X";
+    }
+
 }
