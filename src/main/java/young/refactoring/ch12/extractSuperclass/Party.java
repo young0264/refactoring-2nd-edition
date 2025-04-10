@@ -10,4 +10,12 @@ public class Party {
     public String getName() {
         return name;
     }
+
+    public int monthlyCost() {
+        return 0;
+    }
+
+    public int annualCost() {
+        return monthlyCost() * 12;
+    }
 }

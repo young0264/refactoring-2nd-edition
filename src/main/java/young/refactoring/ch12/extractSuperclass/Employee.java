@@ -1,13 +1,12 @@
 package young.refactoring.ch12.extractSuperclass;
 
-public class Employee{
+public class Employee extends Party{
     Long id;
-    String name;
     int monthlyCost;
 
     public Employee(Long id, String name, int monthlyCost) {
+        super(name);
         this.id = id;
-        this.name = name;
         this.monthlyCost = monthlyCost;
     }
 
@@ -19,11 +18,10 @@ public class Employee{
         return name;
     }
 
-    public int getMonthlyCost() {
+
+    @Override
+    public int monthlyCost() {
         return monthlyCost;
     }
 
-    public int annualCost() {
-        return this.monthlyCost * 12;
-    }
 }

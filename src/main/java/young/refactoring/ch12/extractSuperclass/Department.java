@@ -1,11 +1,10 @@
 package young.refactoring.ch12.extractSuperclass;
 
-public class Department {
-    String name;
+public class Department extends Party {
     Staff staff;
 
     public Department(String name, Staff staff) {
-        this.name = name;
+        super(name);
         this.staff = staff;
     }
 
@@ -22,13 +21,9 @@ public class Department {
     }
 
     public int totalMonthlyCost() {
-        return staff.employees
-                .stream()
+        return staff.employees.stream()
                 .map(e -> e.monthlyCost)
                 .reduce(0, Integer::sum);
     }
 
-    public int totalAnnualCost() {
-        return totalMonthlyCost() * 12;
-    }
 }
