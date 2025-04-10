@@ -2,9 +2,15 @@ package young.refactoring.ch12.removeSubClass;
 
 public class Person {
     String name;
+    String gender;
 
     public Person(String name) {
         this.name = name;
+    }
+
+    public Person(String name, String gender) {
+        this.name = name;
+        this.gender = gender.isEmpty() ? "X" : gender;
     }
 
     public String getName() {
@@ -12,6 +18,6 @@ public class Person {
     }
 
     public String getGenderCode() {
-        return "X";
+        return gender;
     }
 }
