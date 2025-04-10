@@ -5,4 +5,9 @@ public class Show {
     int price;
     boolean talkback;
 
+
+    public Show(int price, boolean talkback) {
+        this.price = price;
+        this.talkback = talkback;
+    }
 }
